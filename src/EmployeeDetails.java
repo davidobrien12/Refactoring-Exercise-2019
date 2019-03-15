@@ -501,6 +501,9 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 					nextRecord();
 					displayRecords(currentEmployee);
 				} 
+				else {
+					change = false;
+				}
 			} 
 		} 
 	}
@@ -567,15 +570,14 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 
 	public boolean correctPps(String pps, long currentByte) {
 		boolean ppsExist = false;
-		if (pps.length() == 8 || pps.length() == 9) {
+		if (pps.length() == 7) {
 			if (Character.isDigit(pps.charAt(0)) && Character.isDigit(pps.charAt(1))
 					&& Character.isDigit(pps.charAt(2))	&& Character.isDigit(pps.charAt(3)) 
 					&& Character.isDigit(pps.charAt(4))	&& Character.isDigit(pps.charAt(5)) 
-					&& Character.isDigit(pps.charAt(6))	&& Character.isLetter(pps.charAt(7))
-					&& (pps.length() == 8 || Character.isLetter(pps.charAt(8)))) {
+					&& Character.isLetter(pps.charAt(6))) {
 				application.openReadFile(file.getAbsolutePath());
 				ppsExist = application.isPpsExist(pps, currentByte);
-				application.closeReadFile();// close file for reading
+				application.closeReadFile();
 			}
 			else
 				ppsExist = true;
@@ -859,7 +861,7 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 				displaySearchBySurnameDialog();
 			}
 			else if (e.getSource() == saveChange) {
-				;
+				saveChanges();
 			}
 			else if (e.getSource() == firstItem || e.getSource() == first) {
 				firstRecord();
