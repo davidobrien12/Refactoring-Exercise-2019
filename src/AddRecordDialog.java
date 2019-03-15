@@ -163,17 +163,6 @@ public class AddRecordDialog extends JDialog implements ActionListener {
 		}
 		return valid;
 	}
-//////////////////////////////////////////////////
-	public void setToWhite() {
-		ppsField.setBackground(Color.WHITE);
-		surnameField.setBackground(Color.WHITE);
-		firstNameField.setBackground(Color.WHITE);
-		salaryField.setBackground(Color.WHITE);
-		genderCombo.setBackground(Color.WHITE);
-		departmentCombo.setBackground(Color.WHITE);
-		fullTimeCombo.setBackground(Color.WHITE);
-	}
-
 
 	public void actionPerformed(ActionEvent e) {
 
@@ -186,8 +175,8 @@ public class AddRecordDialog extends JDialog implements ActionListener {
 			}
 			else {
 				JOptionPane.showMessageDialog(null, "Wrong values or format! Please check!");
-				//////////////////
-				setToWhite();
+				Colors bgColor = new Colors(ppsField,surnameField,firstNameField,salaryField,genderCombo,departmentCombo,fullTimeCombo);
+				bgColor.setToWhite();
 			}
 		}
 		else if (e.getSource() == cancel)
